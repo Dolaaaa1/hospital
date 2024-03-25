@@ -1,0 +1,18 @@
+{% load bootstrap4 %}
+<div class="item" >
+    <img src="{{object.image.url}}" alt="Italian Trulli" width="200px" height="200px">
+</div>
+
+<h1>{{object}}</h1>
+
+<p>{{object.specialty}}</p>
+<h4>{{object.phone_number}}</h4>
+
+
+<form action="" method="post" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary">Book</button>
+    {% endbuttons %}
+</form>

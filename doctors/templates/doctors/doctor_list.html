@@ -1,0 +1,316 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search -- Doctors</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css'>
+    <style>
+        :root {
+
+            /**
+   * colors
+   */
+
+            --rich-black-fogra-29: hsl(222, 44%, 8%);
+            --middle-blue-green_40: hsla(174, 64%, 71%, 0.4);
+            --midnight-green: hsl(186, 100%, 19%);
+            --midnight-green_a25: hsla(186, 100%, 19%, 0.25);
+            --independece: hsl(236, 14%, 39%);
+            --verdigris: hsl(182, 100%, 35%);
+            --ming: hsl(186, 72%, 24%);
+            --space-cadet: hsla(226, 45%, 24%);
+            --eerie-black: hsl(0, 0%, 13%);
+            --alice-blue: hsl(187, 25%, 94%);
+            --gray-web: hsl(0, 0%, 50%);
+            --gainsboro: hsl(0, 0%, 87%);
+            --white: hsl(0, 0%, 100%);
+            --white_a20: hsla(0, 0%, 100%, 0.2);
+            --white_a10: hsla(0, 0%, 100%, 0.1);
+            --black: hsl(0, 0%, 0%);
+
+            /**
+   * typography
+   */
+
+            --ff-oswald: 'Oswald', sans-serif;
+            --ff-rubik: 'Rubik', sans-serif;
+
+            --headline-lg: 5rem;
+            --headline-md: 3rem;
+            --headline-sm: 2rem;
+            --title-lg: 1.8rem;
+            --title-md: 1.5rem;
+            --title-sm: 1.4rem;
+
+            --fw-500: 500;
+            --fw-700: 700;
+
+            /**
+   * spacing
+   */
+
+            --section-padding: 120px;
+
+            /**
+   * box shadow
+   */
+
+            --shadow-1: 0px 2px 20px hsla(209, 36%, 72%, 0.2);
+            --shadow-2: 0 4px 16px hsla(0, 0%, 0%, 0.06);
+
+            /**
+   * border radius
+   */
+
+            --radius-circle: 50%;
+            --radius-12: 12px;
+            --radius-6: 6px;
+            --radius-4: 4px;
+
+            /**
+   * transition
+   */
+
+            --transition-1: 0.25s ease;
+            --transition-2: 0.5s ease;
+            --transition-3: 1s ease;
+            --cubic-in: cubic-bezier(0.51, 0.03, 0.64, 0.28);
+            --cubic-out: cubic-bezier(0.05, 0.83, 0.52, 0.97);
+
+        }
+
+        /*-----------------------------------*\
+  #RESET
+\*-----------------------------------*/
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        a,
+        img,
+        span,
+        time,
+        input,
+        button,
+        ion-icon {
+            display: block;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        img {
+            height: auto;
+        }
+
+        input,
+        button {
+            background: none;
+            border: none;
+            font: inherit;
+        }
+
+        input {
+            width: 100%;
+            outline: none;
+        }
+
+        button {
+            cursor: pointer;
+        }
+
+        ion-icon {
+            pointer-events: none;
+        }
+
+        address {
+            font-style: normal;
+        }
+
+        html {
+            font-size: 10px;
+            font-family: var(--ff-rubik);
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--midnight-green);
+            /* Dark green background */
+            font-size: 1.6rem;
+            color: var(--independece);
+            line-height: 5rem;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .doctor-images {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .doctor-image {
+            position: relative;
+            width: calc(50% - 10px);
+            /* Two images per row */
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .doctor-image:hover {
+            transform: scale(1.05);
+        }
+
+        .doctor-image img {
+            width: 100%;
+            height: auto;
+        }
+
+        .availability {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: red;
+            /* Default to offline */
+            border: 2px solid #fff;
+        }
+
+        .online {
+            background-color: green;
+        }
+
+        .icons {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            justify-content: space-between;
+            width: 80%;
+            color: #666;
+        }
+
+        .icons i {
+            font-size: 18px;
+            transition: color 0.3s ease;
+            cursor: pointer;
+        }
+
+        .icons i:hover {
+            color: #333;
+        }
+
+        .search-container {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .search-container input[type=text] {
+            width: 70%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .search-container button {
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .search-container button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Search for Doctors</h1>
+        <div >
+            <div class="sidebar-box">
+                <form action="{% url 'doctors:doctors_list'%}" method="GET" class="search-form">
+                    <div class="form-group">
+                        <span class="icon fa fa-search"></span>
+                        <input type="text" name='q' class="form-control" placeholder="Type a keyword and hit enter">
+                    </div>
+                </form>
+            </div>
+
+        <div class="doctor-images">
+            
+            {% for doctor in object_list %}
+            <div class="card" style="width: 18rem;">
+                <img src="{{doctor.image.url}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h2 class="card-title">{{doctor.name}}</h2>
+                  <p class="card-text">{{doctor.specialty}}</p>
+                  <a href="{{doctor.get_absolute_url}}" class="btn btn-primary">Book Now</a>
+                </div>
+              </div>
+            {% endfor %}
+        </div>
+        <div class="pagination">
+            <span class="step-links">
+                {% if page_obj.has_previous %}
+                    <a href="?page=1">&laquo; first</a>
+                    <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+                {% endif %}
+        
+                <span class="current">
+                    Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+                </span>
+        
+                {% if page_obj.has_next %}
+                    <a href="?page={{ page_obj.next_page_number }}">next</a>
+                    <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+                {% endif %}
+            </span>
+        </div>
+    </div>
+    
+
+
+</body>
+
+</html>
