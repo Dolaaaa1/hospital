@@ -21,4 +21,4 @@ def send_message(request):
            [email],
         )
 
-    return render(request,'contact.html',{'myInfo':myInfo})
+    return render(request,'contact/contact.html',{'myInfo':myInfo})

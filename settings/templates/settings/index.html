@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,13 +31,14 @@
   <!-- 
     - custom css link
   -->
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style.css' %}">
+
 
   <!-- 
     - preload images
   -->
-  <link rel="preload" as="image" href="./assets/images/co.jpg">
-  <link rel="preload" as="image" href="./assets/images/co.jpg">
+  <link rel="preload" as="image" href="{% static '/assets/images/co.jpg' %}">
+  <link rel="preload" as="image" href="{% static '/assets/images/co.jpg' %}">
 
 </head>
 
@@ -60,7 +63,7 @@
     <div class="container">
 
       <a href="#" class="logo">
-        <img src="./assets/images/tech.jpg" width="136" height="46" alt="Doclab home">
+        <img src="{% static '/assets/images/tech.jpg' %}" width="136" height="46" alt="Doclab home">
       </a>
 
       <nav class="navbar" data-navbar>
@@ -68,7 +71,7 @@
         <div class="navbar-top">
 
           <a href="#" class="logo">
-            <img src="./assets/images/tech.jpg" width="136" height="46" alt="kfs">
+            <img src="% static '/assets/images/tech.jpg'%}" width="136" height="46" alt="kfs">
           </a>
 
           <button class="nav-close-btn" aria-label="clsoe menu" data-nav-toggler>
@@ -207,7 +210,7 @@
           </div>
 
           <figure class="hero-banner" data-reveal="right">
-            <img src="./assets/images/co.jpg" width="590" height="517" loading="eager" alt="hero banner" class="w-500">
+            <img src="{% static '/assets/images/co.jpg' %}" width="590" height="517" loading="eager" alt="hero banner" class="w-500">
           </figure>
 
 
@@ -471,7 +474,7 @@
 
 
 
-      <script src="./assets/js/script.js"></script>
+      <script src="{% static '/assets/js/script.js' %}"></script>
 
       <!-- 
     - ionicon link

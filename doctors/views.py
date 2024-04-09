@@ -11,7 +11,7 @@ from django.db.models.query_utils import Q
 
 class DoctorList(ListView):
     model = Doctor
-    paginate_by = 2
+    paginate_by = 1
   
     template_name ='doctors/doctor_list.html'
     

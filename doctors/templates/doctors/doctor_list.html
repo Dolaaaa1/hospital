@@ -280,14 +280,14 @@
         <div class="doctor-images">
             
             {% for doctor in object_list %}
-            <div class="card" style="width: 18rem;">
-                <img src="{{doctor.image.url}}" class="card-img-top" alt="...">
-                <div class="card-body">
-                  <h2 class="card-title">{{doctor.name}}</h2>
-                  <p class="card-text">{{doctor.specialty}}</p>
-                  <a href="{{doctor.get_absolute_url}}" class="btn btn-primary">Book Now</a>
+                <div class="card" style="width: 18rem;">
+                    <img src="{{doctor.image.url}}" width="200px" height="200px" class="card-img-top" alt="...">
+                    <div class="card-body">
+                    <h2 class="card-title">{{doctor.name}}</h2>
+                    <p class="card-text">{{doctor.specialty}}</p>
+                    <a href="{{doctor.get_absolute_url}}" class="btn btn-primary">Book Now</a>
+                    </div>
                 </div>
-              </div>
             {% endfor %}
         </div>
         <div class="pagination">
