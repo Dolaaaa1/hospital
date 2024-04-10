@@ -49,6 +49,11 @@ class DoctorBook(models.Model):
     civil_id =models.CharField(max_length=16)
     date_from = models.DateField(default=timezone.now)
     date_to = models.DateField(default=timezone.now)
+    
+    
+    
+    def __str__(self):
+        return self.user
 
     
     

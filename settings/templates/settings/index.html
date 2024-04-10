@@ -93,21 +93,26 @@
           <li class="navbar-item">
             <a href="service.html" class="navbar-link title-md">Services</a>
           </li>
-
+          {% if request.user.is_authenticated %}
           <li class="navbar-item">
-            <a href="login.html" class="navbar-link title-md">Register</a>
+            <a href="{% url 'accounts:profile'%}" class="navbar-link title-md">Profile</a>
+          </li>
+          {% else %}
+          <li class="navbar-item">
+            <a href="{% url 'accounts:signup' %}" class="navbar-link title-md">Signup</a>
           </li>
 
           <li class="navbar-item">
-            <a href="signIn.html" class="navbar-link title-md">login</a>
+            <a href="{% url 'login'%}" class="navbar-link title-md">Login</a>
+
+          </li>
+          {% endif %}
+          <li class="navbar-item">
+            <a href="{% url 'contact:contact'%}" class="navbar-link title-md">Contact</a>
 
           </li>
           <li class="navbar-item">
-            <a href="{% url 'contact:contact'%}" class="navbar-link title-md">contact</a>
-
-          </li>
-          <li class="navbar-item">
-            <a href="pay.html" class="navbar-link title-md">payment</a>
+            <a href="pay.html" class="navbar-link title-md">Payment</a>
 
           </li>
         </ul>
@@ -210,7 +215,8 @@
           </div>
 
           <figure class="hero-banner" data-reveal="right">
-            <img src="{% static '/assets/images/co.jpg' %}" width="590" height="517" loading="eager" alt="hero banner" class="w-500">
+            <img src="{% static '/assets/images/co.jpg' %}" width="590" height="517" loading="eager" alt="hero banner"
+              class="w-500">
           </figure>
 
 

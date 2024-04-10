@@ -1,0 +1,56 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>profile</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #004953;
+            padding: 0;
+
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+
+        }
+        .item1{
+            
+            margin: 3rem auto;
+            width: 90%;
+            max-width: 40rem;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            padding: 1rem;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="item1">
+    <h2>profile</h2>
+
+
+
+   <h3> {{profile.user.username}} </h3>
+
+    <h3>{{profile.user.email}}</h3>
+
+    <h3>{{profile.address}}<h3>
+
+    <h5><a href="{% url 'accounts:profile_edit'%}">Edit Profile</h5>
+    <h5><a href="{% url 'accounts:reservation'%}">My Reservations</h5>
+    </div> 
+
+
+
+</body>
+</html>    
+   

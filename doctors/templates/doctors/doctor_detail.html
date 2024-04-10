@@ -1,18 +1,143 @@
 {% load bootstrap4 %}
-<div class="item" >
-    <img src="{{object.image.url}}" alt="Italian Trulli" width="200px" height="200px">
-</div>
+<!DOCTYPE html>
+<html lang="en">
 
-<h1>{{object}}</h1>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Detail</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #004953;
+            padding: 0;
+            background-image: url('background_image.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+        .container {
+            max-width: 500px;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #004953;;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .container h2 {
+            margin-top: 0;
+            font-size: 24px;
+            text-align: center;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+        }
+        
+        button[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            width: 100%;
+        }
+        
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
 
-<p>{{object.specialty}}</p>
-<h4>{{object.phone_number}}</h4>
+        .item{
+            text-align: center;
+            border: 1px solid #000; 
+            padding: 1px; 
+            
+        }
+
+        h1{
+            text-align: center;
+        }
+        p{
+            text-align: center;
+        }
+        h4{
+            text-align: center;
+        }
+        .item1{
+            
+            margin: 3rem auto;
+            width: 90%;
+            max-width: 40rem;
+            border-radius: 12px;
+            background-color: white;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            padding: 1rem;
+        }
 
 
-<form action="" method="post" class="form">
-    {% csrf_token %}
-    {% bootstrap_form form %}
-    {% buttons %}
-        <button type="submit" class="btn btn-primary">Book</button>
-    {% endbuttons %}
-</form>
+
+        
+        
+    </style>
+</head>
+<body> 
+ <div class="container">   
+    <div class="item1">   
+        <div class="item" >
+            <img src="{{object.image.url}}" alt="Italian Trulli" width="200px" height="200px">
+        </div>
+
+            <h1>{{object}}</h1>
+
+            <p>{{object.specialty}}</p>
+            <h4>{{object.phone_number}}</h4>
+        </div> 
+    <div>
+
+
+    <form action="" method="post" class="form">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        {% buttons %}
+            <button type="submit" class="btn btn-primary">Book</button>
+        {% endbuttons %}
+    </form>
+
+</body>
+
+</html>
